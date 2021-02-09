@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PDO;
+use PDOException;
 
 class HomeController extends Controller
 {

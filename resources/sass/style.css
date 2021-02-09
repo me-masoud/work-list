@@ -1,0 +1,927 @@
+@font-face {
+    font-family: iran-sans;
+    src: url(../font/IranianSans.ttf);
+}
+
+
+header {
+    background-color:rgb(4, 77, 95);
+    width: 100%;
+    height: 60px;
+    float: right;
+
+}
+.logo{
+    float: right ;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 50px;
+}
+.text-logo {
+    float: right ;
+    text-align: right;
+    color: white;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: -10px 10px 10px 0px;
+}
+.date {
+    float: left;
+    text-align: center;
+    background-color: rgb(70, 165, 165);
+    border-radius: 10px;
+    margin: 15px 0 10px 50px;
+
+}
+.date h5 {
+    color: white;
+    margin: 5px 25px 5px 25px;
+    font-size: 20px;
+    font-family: iran-sans;
+}
+.date span {
+    color: rgb(255, 194, 27);
+    margin: 5px 25px 5px 25px;
+    font-size: 20px;
+}
+.hoshdar {
+    margin: 10px 0 10px 25px;
+    float: left;
+}
+.home {
+    margin: 10px 0 10px 25px;
+    float: left;
+}
+#sidebar {
+    float: right;
+    background-color: rgb(4, 77, 95);
+    width: 20%;
+    height: 100%;
+    overflow: auto;
+
+}
+#bodyfull {
+    float: right;
+    width: 80%;
+    background-color: rgb(252, 251, 250);
+
+}
+
+.today-ico {
+    overflow: auto;
+    position: fixed ;
+    margin: 0 0 50px 50px;
+    float: left;
+    bottom: 15px;
+    left: 15px;
+
+
+}
+
+#sidebar .menu ul{
+    list-style-type: none;
+    padding-right: 0px;
+    background-color: rgb(4, 77, 95);
+    width: 80%;
+    height: 100%;
+    float: right;
+    margin: 0px;
+    padding: 0px;
+
+}
+#sidebar .menu li{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid rgb(70, 165, 165);
+    text-align: right;
+    padding: 20px;
+
+}
+#sidebar .menu li span {
+    color: white;
+    margin-right: 5px;
+    font-size: 20px;
+    float: right;
+    text-align: right;
+}
+
+.menu {
+    float: right;
+    width: 100%;
+    height: auto;
+}
+.today-worklist {
+    float: right;
+    width: 100%;
+    height: auto;
+    background-color: rgb(252, 251, 250);
+    margin-top: 5px;
+}
+
+.today-worklist .twl-block {
+    float: right;
+    width: 98%;
+    height: auto;
+    margin: 5px 1% 5px 1%;
+    background-color: rgb(252, 251, 250);
+    border-color: rgb(4, 77, 95);
+    border: 1px solid ;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.today-worklist .twl-block .twlb-head {
+    background-color: rgb(4, 77, 95);
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    float: right;
+    font-family: iran-sans;
+}
+.today-worklist .twl-block .twlb-head h4 {
+    font-family: iran-sans;
+    text-align: center;
+    color: white;
+    direction: rtl;
+}
+
+.today-worklist .twl-body {
+    float: right;
+    width: 100%;
+    height: auto;
+    font-family: iran-sans;
+    margin-right: 0%;
+
+    text-align: center;
+}
+.today-worklist .twl-body ul {
+    list-style-type: circle;
+    border-bottom: 1px solid rgb(4, 77, 95);
+    margin: 5px 2.5% 5px 2.5%;
+    float: right;
+    width: 95%;
+    height: auto;
+}
+.today-worklist .twl-body li {
+    font-size: 12px;
+    float: right;
+    margin: 2px 3% 0 3%;
+}
+
+.today-worklist .twl-block button{
+    width: 60%;
+    float: right;
+    margin: 10px 20% 10px 20%;
+    background-color: rgb(4, 77, 95);
+    text-align: center;
+    color: white;
+    border-radius: 7px;
+}
+.today-worklist .twl-block button:hover {
+    width: 60%;
+    float: right;
+    margin: 10px 20% 10px 20%;
+    background-color: rgb(248, 249, 250);
+    text-align: center;
+    color: rgb(6, 52, 104);
+    border-radius: 7px;
+}
+#bodyfull .dayblock.db-body span {
+    color: white;
+    margin: 3px 5px 3px 5px;
+}
+
+#bodyfull .dayblock {
+    width: 31%;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    margin: 5px 1% 5px 1%;
+    border-color: teal;
+    border: 1px solid rgb(4, 77, 95);
+    float: right;
+}
+#bodyfull .dayblock .db-head {
+    float: right;
+    background-color: rgb(4, 77, 95);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height:70px ;
+}
+#bodyfull .dayblock .db-date-name {
+    float: right;
+    text-align: center;
+    border:1px solid rgb(70, 165, 165);
+    width: 70%;
+    margin-top: 15px;
+    margin-right: 15%;
+    border-radius: 10px;
+}
+#bodyfull .dayblock .db-date-name h4 {
+    color: rgb(243, 179, 4);
+    text-align: center;
+    margin: 10px 20px 10px 20px;
+}
+
+#bodyfull .dayblock .db-body {
+    width: 95%;
+
+    float: right;
+    text-align: center;
+
+}
+
+#bodyfull .db-body ul {
+    list-style-type: circle;
+    border-bottom: 1px solid rgb(4, 77, 95);
+    margin: 5px 2.5% 5px 2.5%;
+
+}
+#bodyfull .dayblock .db-body button{
+    width: 60%;
+    float: right;
+    margin: 10px 20% 10px 20%;
+    background-color: rgb(4, 77, 95);
+    text-align: center;
+    color: white;
+    border-radius: 7px;
+}
+#bodyfull .dayblock .db-body button:hover {
+    width: 60%;
+    float: right;
+    margin: 10px 20% 10px 20%;
+    background-color: rgb(248, 249, 250);
+    text-align: center;
+    color: rgb(6, 52, 104);
+    border-radius: 7px;
+}
+#bodyfull .dayblock.db-body span {
+    color: white;
+    margin: 3px 5px 3px 5px;
+}
+
+@media screen and (min-width: 280px) {
+    header {
+        background-color:rgb(4, 77, 95);
+        width: 100%;
+        height: auto;
+        float: right;
+
+    }
+    .logo{
+        float: right ;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 50px;
+    }
+    .text-logo {
+        float: right ;
+        text-align: right;
+        color: white;
+        font-size: 20px;
+        font-family: iran-sans;
+        margin: -10px 10px 10px 0px;
+    }
+    .date {
+        float: left;
+        text-align: center;
+        background-color: rgb(70, 165, 165);
+        border-radius: 10px;
+        margin: 15px 0 10px 50px;
+
+    }
+    .date h5 {
+        color: white;
+        margin: 5px 25px 5px 25px;
+        font-size: 20px;
+        font-family: iran-sans;
+    }
+    .date span {
+        color: rgb(255, 194, 27);
+        margin: 5px 25px 5px 25px;
+        font-size: 20px;
+        font-family: iran-sans;
+    }
+    .hoshdar {
+        margin: 10px 0 10px 25px;
+        float: left;
+    }
+    .home {
+        margin: 10px 0 10px 25px;
+        float: left;
+    }
+    #sidebar {
+        float: right;
+        background-color: rgb(4, 77, 95);
+        width: 100%;
+        height: auto;
+    }
+    #bodyfull {
+        float: right;
+        width: 100%;
+        background-color: rgb(252, 251, 250);
+        height: 100%;
+    }
+
+    .today-ico {
+        overflow: auto;
+        position: fixed ;
+        margin: 0 0 50px 50px;
+        float: left;
+    }
+
+    #sidebar .menu ul{
+        list-style-type: none;
+        padding-right: 0px;
+        background-color: rgb(4, 77, 95);
+        width: 80%;
+        height: 100%;
+        float: right;
+        margin: 0px;
+        padding: 0px;
+
+    }
+    #sidebar .menu li{
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        border-bottom: 1px solid rgb(70, 165, 165);
+        text-align: right;
+        padding: 20px;
+
+    }
+    #sidebar .menu li span {
+        color: white;
+        margin-right: 5px;
+        font-size: 20px;
+        float: right;
+        text-align: right;
+    }
+    .menu {
+        float: right;
+        width: 100%;
+        height: auto;
+    }
+    .today-worklist {
+        float: right;
+        width: 100%;
+        height: auto;
+        background-color: rgb(252, 251, 250);
+        margin-top: 5px;
+    }
+
+    .today-worklist .twl-block {
+        float: right;
+        width: 98%;
+        height: auto;
+        margin: 5px 1% 5px 1%;
+        background-color: rgb(252, 251, 250);
+    }
+    .today-worklist .twl-block .twlb-haed {
+        background-color: rgb(4, 77, 95);
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        float: right;
+        font-family: iran-sans;
+    }
+    .today-worklist .twl-block .twlb-haed h4 {
+        font-family: iran-sans;
+        text-align: center;
+        color: white;
+        direction: rtl;
+    }
+
+    .today-worklist .twl-body {
+        float: right;
+        width: 100%;
+        height: auto;
+        font-family: iran-sans;
+    }
+    .today-worklist .twl-body ul {
+        list-style-type: none;
+        padding-right: 0px;
+        background-color: rgb(252, 251, 250);
+        width: 80%;
+        height: 100%;
+        float: right;
+        margin: 0px;
+        padding: 0px;
+    }
+    #bodyfull .dayblock {
+        width: 94%;
+        height: auto;
+        background-color: white;
+        border-radius: 10px;
+        margin: 5px 2% 5px 2%;
+        border-color: teal;
+        border: 1px solid rgb(4, 77, 95);
+        float: right;
+        font-family: iran-sans;
+    }
+    #bodyfull .dayblock .db-head {
+        float: right;
+        background-color: rgb(4, 77, 95);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+        height:70px ;
+    }
+    #bodyfull .dayblock .db-date-name {
+        float: right;
+        text-align: center;
+        border:1px solid rgb(70, 165, 165);
+        width: 70%;
+        margin-top: 15px;
+        margin-right: 15%;
+        border-radius: 10px;
+    }
+    #bodyfull .dayblock .db-date-name h4 {
+        color: rgb(243, 179, 4);
+        text-align: center;
+        margin: 10px 20px 10px 20px;
+    }
+
+    #bodyfull .dayblock .db-body {
+        width: 95%;
+
+        float: right;
+        text-align: center;
+
+    }
+
+    #bodyfull .db-body ul {
+        list-style-type: circle;
+        border-bottom: 1px solid rgb(4, 77, 95);
+        margin: 5px 2.5% 5px 2.5%;
+
+    }
+    #bodyfull .dayblock .db-body button{
+        width: 60%;
+        float: right;
+        margin: 10px 20% 10px 20%;
+        background-color: rgb(4, 77, 95);
+        text-align: center;
+        color: white;
+        border-radius: 7px;
+    }
+    #bodyfull .dayblock .db-body button:hover {
+        width: 60%;
+        float: right;
+        margin: 10px 20% 10px 20%;
+        background-color: rgb(248, 249, 250);
+        text-align: center;
+        color: rgb(6, 52, 104);
+        border-radius: 7px;
+    }
+    #bodyfull .dayblock.db-body span {
+        color: white;
+        margin: 3px 5px 3px 5px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    header {
+        background-color:rgb(4, 77, 95);
+        width: 100%;
+        height: auto;
+        float: right;
+
+    }
+    .logo{
+        float: right ;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 50px;
+    }
+    .text-logo {
+        float: right ;
+        text-align: right;
+        color: white;
+        font-size: 20px;
+        font-family: iran-sans;
+        margin: -10px 10px 10px 0px;
+    }
+    .date {
+        float: left;
+        text-align: center;
+        background-color: rgb(70, 165, 165);
+        border-radius: 10px;
+        margin: 15px 0 10px 50px;
+
+    }
+    .date h5 {
+        color: white;
+        margin: 5px 25px 5px 25px;
+        font-size: 20px;
+        font-family: iran-sans;
+    }
+    .date span {
+        color: rgb(255, 194, 27);
+        margin: 5px 25px 5px 25px;
+        font-size: 20px;
+        font-family: iran-sans;
+    }
+    .hoshdar {
+        margin: 10px 0 10px 25px;
+        float: left;
+    }
+    .home {
+        margin: 10px 0 10px 25px;
+        float: left;
+    }
+    #sidebar {
+        float: right;
+        background-color: rgb(4, 77, 95);
+        width: 20%;
+        height: auto;
+    }
+    #bodyfull {
+        float: right;
+        width: 80%;
+        background-color: rgb(252, 251, 250);
+        height: 100%;
+    }
+
+    .today-ico {
+        overflow: auto;
+        position: fixed ;
+        margin: 0 0 50px 50px;
+        float: left;
+    }
+
+    #sidebar .menu ul{
+        list-style-type: none;
+        padding-right: 0px;
+        background-color: rgb(4, 77, 95);
+        width: 80%;
+        height: 100%;
+        float: right;
+        margin: 0px;
+        padding: 0px;
+        font-family: iran-sans;
+
+    }
+    #sidebar .menu li{
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        border-bottom: 1px solid rgb(70, 165, 165);
+        text-align: right;
+        padding: 20px;
+
+    }
+    #sidebar .menu li span {
+        color: white;
+        margin-right: 5px;
+        font-size: 20px;
+        float: right;
+        text-align: right;
+    }
+
+    .menu {
+        float: right;
+        width: 100%;
+        height: auto;
+    }
+    .today-worklist {
+        float: right;
+        width: 100%;
+        height: auto;
+        background-color: rgb(252, 251, 250);
+        margin-top: 5px;
+    }
+
+    .today-worklist .twl-block {
+        float: right;
+        width: 98%;
+        height: auto;
+        margin: 5px 1% 5px 1%;
+        background-color: rgb(252, 251, 250);
+    }
+    .today-worklist .twl-block .twlb-haed {
+        background-color: rgb(4, 77, 95);
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        float: right;
+        font-family: iran-sans;
+    }
+    .today-worklist .twl-block .twlb-haed h4 {
+        font-family: iran-sans;
+        text-align: center;
+        color: white;
+        direction: rtl;
+    }
+
+    .today-worklist .twl-body {
+        float: right;
+        width: 100%;
+        height: auto;
+        font-family: iran-sans;
+    }
+
+    .today-worklist .twl-body ul {
+        list-style-type: none;
+        padding-right: 0px;
+        background-color: rgb(252, 251, 250);
+        width: 80%;
+        height: 100%;
+        float: right;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bodyfull .dayblock {
+        width: 46%;
+        height: auto;
+        background-color: white;
+        border-radius: 10px;
+        margin: 5px 1.7% 5px 1.7%;
+        border-color: teal;
+        border: 1px solid rgb(4, 77, 95);
+        float: right;
+        font-family: iran-sans;
+    }
+    #bodyfull .dayblock .db-head {
+        float: right;
+        background-color: rgb(4, 77, 95);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+        height:70px ;
+    }
+    #bodyfull .dayblock .db-date-name {
+        float: right;
+        text-align: center;
+        border:1px solid rgb(70, 165, 165);
+        width: 70%;
+        margin-top: 15px;
+        margin-right: 15%;
+        border-radius: 10px;
+    }
+    #bodyfull .dayblock .db-date-name h4 {
+        color: rgb(243, 179, 4);
+        text-align: center;
+        margin: 10px 20px 10px 20px;
+    }
+
+    #bodyfull .dayblock .db-body {
+        width: 95%;
+
+        float: right;
+        text-align: center;
+
+    }
+
+    #bodyfull .db-body ul {
+        list-style-type: circle;
+        border-bottom: 1px solid rgb(4, 77, 95);
+        margin: 5px 2.5% 5px 2.5%;
+
+    }
+    #bodyfull .dayblock .db-body button{
+        width: 60%;
+        float: right;
+        margin: 10px 20% 10px 20%;
+        background-color: rgb(4, 77, 95);
+        text-align: center;
+        color: white;
+        border-radius: 7px;
+    }
+    #bodyfull .dayblock .db-body button:hover {
+        width: 60%;
+        float: right;
+        margin: 10px 20% 10px 20%;
+        background-color: rgb(248, 249, 250);
+        text-align: center;
+        color: rgb(6, 52, 104);
+        border-radius: 7px;
+    }
+    #bodyfull .dayblock.db-body span {
+        color: white;
+        margin: 3px 5px 3px 5px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    header {
+        background-color:rgb(4, 77, 95);
+        width: 100%;
+        height: auto;
+        float: right;
+
+    }
+    .logo{
+        float: right ;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 50px;
+    }
+    .text-logo {
+        float: right ;
+        text-align: right;
+        color: white;
+        font-size: 20px;
+        font-family: iran-sans;
+        margin: -10px 10px 10px 0px;
+    }
+    .date {
+        float: left;
+        text-align: center;
+        background-color: rgb(70, 165, 165);
+        border-radius: 10px;
+        margin: 15px 0 10px 50px;
+
+    }
+    .date h5 {
+        color: white;
+        margin: 5px 25px 5px 25px;
+        font-size: 20px;
+        font-family: iran-sans;
+    }
+    .date span {
+        color: rgb(255, 194, 27);
+        margin: 5px 25px 5px 25px;
+        font-size: 20px;
+        font-family: iran-sans;
+    }
+    .hoshdar {
+        margin: 10px 0 10px 25px;
+        float: left;
+    }
+    .home {
+        margin: 10px 0 10px 25px;
+        float: left;
+    }
+    #sidebar {
+        float: right;
+        background-color: rgb(4, 77, 95);
+        width: 20%;
+        height: auto;
+    }
+    #bodyfull {
+        float: right;
+        width: 80%;
+        background-color: rgb(252, 251, 250);
+        height: 100%;
+    }
+
+    .today-ico {
+        overflow: auto;
+        position: fixed ;
+        margin: 0 0 50px 50px;
+        float: left;
+    }
+
+    #sidebar .menu ul{
+        list-style-type: none;
+        padding-right: 0px;
+        background-color: rgb(4, 77, 95);
+        width: 80%;
+        height: 100%;
+        float: right;
+        margin: 0px;
+        padding: 0px;
+        font-family: iran-sans;
+    }
+    #sidebar .menu li{
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        border-bottom: 1px solid rgb(70, 165, 165);
+        text-align: right;
+        padding: 20px;
+
+    }
+    #sidebar .menu li span {
+        color: white;
+        margin-right: 5px;
+        font-size: 20px;
+        float: right;
+        text-align: right;
+    }
+    .menu {
+        float: right;
+        width: 100%;
+        height: auto;
+    }
+    .today-worklist {
+        float: right;
+        width: 100%;
+        height: auto;
+        background-color: rgb(252, 251, 250);
+        margin-top: 5px;
+    }
+
+    .today-worklist .twl-block {
+        float: right;
+        width: 98%;
+        height: auto;
+        margin: 5px 1% 5px 1%;
+        background-color: rgb(252, 251, 250);
+    }
+    .today-worklist .twl-block .twlb-haed {
+        background-color: rgb(4, 77, 95);
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        float: right;
+        font-family: iran-sans;
+    }
+    .today-worklist .twl-block .twlb-haed h4 {
+        font-family: iran-sans;
+        text-align: center;
+        color: white;
+        direction: rtl;
+    }
+
+    .today-worklist .twl-body {
+        float: right;
+        width: 100%;
+        height: auto;
+        font-family: iran-sans;
+    }
+    .today-worklist .twl-body ul {
+        list-style-type: none;
+        padding-right: 0px;
+        background-color: rgb(252, 251, 250);
+        width: 80%;
+        height: 100%;
+        float: right;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bodyfull .dayblock {
+        width: 31%;
+        height: auto;
+        background-color: white;
+        border-radius: 10px;
+        margin: 5px 1% 5px 1%;
+        border-color: teal;
+        border: 1px solid rgb(4, 77, 95);
+        float: right;
+        font-family: iran-sans;
+    }
+    #bodyfull .dayblock .db-head {
+        float: right;
+        background-color: rgb(4, 77, 95);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+        height:70px ;
+    }
+    #bodyfull .dayblock .db-date-name {
+        float: right;
+        text-align: center;
+        border:1px solid rgb(70, 165, 165);
+        width: 70%;
+        margin-top: 15px;
+        margin-right: 15%;
+        border-radius: 10px;
+    }
+    #bodyfull .dayblock .db-date-name h4 {
+        color: rgb(243, 179, 4);
+        text-align: center;
+        margin: 10px 20px 10px 20px;
+    }
+
+    #bodyfull .dayblock .db-body {
+        width: 95%;
+
+        float: right;
+        text-align: center;
+
+    }
+
+    #bodyfull .db-body ul {
+        list-style-type: circle;
+        border-bottom: 1px solid rgb(4, 77, 95);
+        margin: 5px 2.5% 5px 2.5%;
+
+    }
+    #bodyfull .dayblock .db-body button{
+        width: 60%;
+        float: right;
+        margin: 10px 20% 10px 20%;
+        background-color: rgb(4, 77, 95);
+        text-align: center;
+        color: white;
+        border-radius: 7px;
+    }
+    #bodyfull .dayblock .db-body button:hover {
+        width: 60%;
+        float: right;
+        margin: 10px 20% 10px 20%;
+        background-color: rgb(248, 249, 250);
+        text-align: center;
+        color: rgb(6, 52, 104);
+        border-radius: 7px;
+    }
+    #bodyfull .dayblock.db-body span {
+        color: white;
+        margin: 3px 5px 3px 5px;
+    }
+}
