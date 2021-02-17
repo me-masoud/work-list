@@ -36,7 +36,7 @@
                 </div>
             @endif
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8" style="background-color: #a0aec0">
                 <h1>Welcome to WorkList project From MasoudPolo & AhmadReza</h1>
                 <br>
                 <h2>WorkList is a useful project that provides you to manage your days tasks.</h2>
