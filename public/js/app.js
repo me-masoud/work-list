@@ -1921,9 +1921,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1933,7 +1930,8 @@ __webpack_require__.r(__webpack_exports__);
         title: null
       },
       tasks: null,
-      allTasks: null
+      allTasks: null,
+      edit: 0
     };
   },
   methods: {
@@ -1961,9 +1959,21 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    logout: function logout() {
-      axios.post('/logout');
-      location.reload();
+    updateTask: function updateTask(title, description, id) {
+      var stagedTask = {
+        title: title,
+        descripiton: description,
+        id: id
+      };
+      var that = this;
+      axios.post('/updatetask', stagedTask).then(function (response) {
+        if (response.status == 200) {
+          that.setEdit(0);
+        }
+      });
+    },
+    setEdit: function setEdit(editable) {
+      this.edit = editable;
     }
   },
   created: function created() {
@@ -62438,35 +62448,11 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { attrs: { id: "sidebar" } }, [
-      _c("div", { staticClass: "menu" }, [
-        _c("ul", [
-          _c("li", [_vm._v("برنامه های امروز")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("کلیه برنامه ها")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("برنامه های ویژه")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("پروفایل من")]),
-          _vm._v(" "),
-          _c("li", [
-            _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    return _vm.logout()
-                  }
-                }
-              },
-              [_vm._v("خروج از حساب کاربری")]
-            )
-          ])
-        ])
-      ]),
+      _vm._m(3),
       _vm._v(" "),
       _c("div", { staticClass: "today-worklist" }, [
         _c("div", { staticClass: "twl-block" }, [
-          _vm._m(3),
+          _vm._m(4),
           _vm._v(" "),
           _c("div", { staticClass: "twl-body" }, [
             _c("input", {
@@ -62521,11 +62507,33 @@ var render = function() {
               { staticStyle: { display: "inline-grid" } },
               _vm._l(_vm.tasks, function(task) {
                 return _c("li", { key: task.id }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(task.title) +
-                      "\n                        "
-                  )
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: task.title,
+                        expression: "task.title"
+                      }
+                    ],
+                    attrs: { type: "text" },
+                    domProps: { value: task.title },
+                    on: {
+                      blur: function($event) {
+                        return _vm.updateTask(
+                          task.title,
+                          task.description,
+                          task.id
+                        )
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(task, "title", $event.target.value)
+                      }
+                    }
+                  })
                 ])
               }),
               0
@@ -62538,38 +62546,74 @@ var render = function() {
     _c(
       "div",
       { attrs: { id: "bodyfull" } },
-      [
-        _vm._l(_vm.allTasks, function(task, index) {
-          return _c("div", { key: task.id, staticClass: "dayblock" }, [
-            _c("div", { staticClass: "db-head" }, [
-              _c("div", { staticClass: "db-date-name" }, [
-                _c("h4", [
-                  _vm._v(
-                    _vm._s(
-                      _vm.m(index, "YYYY-MM-DD").format("jMMMM jDD - dddd")
-                    )
-                  )
-                ])
+      _vm._l(_vm.allTasks, function(task, index) {
+        return _c("div", { key: task.id, staticClass: "dayblock" }, [
+          _c("div", { staticClass: "db-head" }, [
+            _c("div", { staticClass: "db-date-name" }, [
+              _c("h4", [
+                _vm._v(
+                  _vm._s(_vm.m(index, "YYYY-MM-DD").format("jMMMM jDD - dddd"))
+                )
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "db-body" }, [
-              _c(
-                "ul",
-                _vm._l(task, function(item) {
-                  return _c("li", { key: item.id }, [
-                    _vm._v(_vm._s(item.title) + "(" + _vm._s(item.status) + ")")
-                  ])
-                }),
-                0
-              )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "db-body" }, [
+            _c(
+              "ul",
+              _vm._l(task, function(item) {
+                return _c("li", { key: item.id }, [
+                  item.status == "active"
+                    ? _c("span", [_vm._v("فعال")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.edit
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: item.title,
+                            expression: "item.title"
+                          }
+                        ],
+                        attrs: { type: "text" },
+                        domProps: { value: item.title },
+                        on: {
+                          blur: function($event) {
+                            return _vm.updateTask(
+                              item.title,
+                              item.description,
+                              item.id
+                            )
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(item, "title", $event.target.value)
+                          }
+                        }
+                      })
+                    : _c(
+                        "span",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.setEdit(1)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(item.title) + "-" + _vm._s(item.status))]
+                      )
+                ])
+              }),
+              0
+            )
           ])
-        }),
-        _vm._v(" "),
-        _vm._m(4)
-      ],
-      2
+        ])
+      }),
+      0
     )
   ])
 }
@@ -62632,26 +62676,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "twlb-head" }, [
-      _c("h4", [_vm._v("لیست کار امروز")])
+    return _c("div", { staticClass: "menu" }, [
+      _c("ul", [
+        _c("li", [_vm._v("برنامه های امروز")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("کلیه برنامه ها")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("برنامه های ویژه")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("پروفایل من")]),
+        _vm._v(" "),
+        _c("li", [
+          _c("form", { attrs: { action: "/logout", method: "post" } }, [
+            _c("button", { attrs: { type: "submit" } }, [
+              _vm._v("خروج از حساب کاربری")
+            ])
+          ])
+        ])
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "today-ico" }, [
-      _c("a", { attrs: { href: "#", title: "برنامه کاری امروز" } }, [
-        _c("img", {
-          attrs: {
-            src: "images/todayico.png",
-            alt: "برنامه کاری امروز",
-            title: "برنامه کاری امروز",
-            width: "70",
-            height: "70"
-          }
-        })
-      ])
+    return _c("div", { staticClass: "twlb-head" }, [
+      _c("h4", [_vm._v("لیست کار امروز")])
     ])
   }
 ]

@@ -31,7 +31,7 @@
             <li>کلیه برنامه ها</li>
             <li>برنامه های ویژه</li>
             <li>پروفایل من</li>
-            <li><button @click="logout()">خروج از حساب کاربری</button></li>
+            <li><form action="/logout" method="post"><button type="submit">خروج از حساب کاربری</button></form></li>
         </ul>
         </div>
 
@@ -47,7 +47,7 @@
                     <button @click="saveTask()" id="Button">ثبت</button>
                     <ul style="display:inline-grid">
                         <li v-for="task in tasks" :key="task.id">
-                            {{task.title}}
+                            <input type="text" v-model="task.title" @blur="updateTask(task.title,task.description ,task.id)">
                         </li>
                     </ul>
                 </div>
@@ -55,23 +55,20 @@
         </div>
     </div>
     <div id="bodyfull">
-
-
         <div class="dayblock" v-for="(task , index) in allTasks" :key="task.id">
             <div class="db-head">
                 <div class="db-date-name"><h4>{{m(index , 'YYYY-MM-DD').format('jMMMM jDD - dddd')}}</h4></div>
             </div>
             <div class="db-body">
                 <ul>
-                    <li v-for="item in task" :key="item.id">{{item.title}}({{item.status}})</li>
+                    <li v-for="item in task" :key="item.id">
+                        <span v-if="item.status == 'active'">فعال</span>
+                        <input v-if="edit" type="text" v-model="item.title" @blur="updateTask(item.title,item.description,item.id)">
+                        <span v-else @click="setEdit(1)">{{item.title}}-{{item.status}}</span>
+                        </li>
                 </ul>
             </div>
         </div>
-        <div class="today-ico">
-            <a href="#" title="برنامه کاری امروز" ><img src="images/todayico.png" alt="برنامه کاری امروز" title="برنامه کاری امروز" width="70" height="70" /></a>
-        </div>
-
-
     </div>
 </div>
 </template>
@@ -86,6 +83,7 @@ export default {
             },
             tasks:null,
             allTasks:null,
+            edit:0,
         }
     },
     methods: {
@@ -111,9 +109,21 @@ export default {
                }
             })
         },
-        logout(){
-            axios.post('/logout');
-            location.reload()
+        updateTask(title, description , id){
+            let stagedTask = {
+                title : title,
+                descripiton:description,
+                id: id,
+            }
+            let that = this
+            axios.post('/updatetask' , stagedTask).then(function(response){
+                if(response.status == 200){
+                    that.setEdit(0)
+                }
+            })
+        },
+        setEdit(editable){
+            this.edit = editable
         }
     },
     created() {

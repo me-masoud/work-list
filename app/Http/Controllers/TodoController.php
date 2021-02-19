@@ -70,4 +70,19 @@ class TodoController extends Controller
             return 'a problem has accourd';
         }
     }
+
+    public function updateTask(Request $request)
+    {
+        //do some validation
+
+        $update = Todo::findOrFail($request->id);
+
+        $update->title = $request->title;
+        $update->description = $request->description;
+        $update->save();
+
+        if($update){
+            return 'updated';
+        }
+    }
 }

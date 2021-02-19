@@ -34,4 +34,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Route::get('gettasks' ,[TodoController::class,'index'])->middleware('auth');
 Route::get('gettodaytasks' ,[TodoController::class,'getTodayTasks'])->middleware('auth');
-Route::get('gettasks/{start}/{end}' ,[TodoController::class,'getTasks']);
+Route::get('gettasks/{start}/{end}' ,[TodoController::class,'getTasks'])->middleware('auth');
+Route::post('updatetask', [TodoController::class , 'updateTask'])->middleware('auth');
