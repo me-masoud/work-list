@@ -1,16 +1,12 @@
 <template>
 <div>
       <header>
-
         <div class="logo">
             <img src="images/logo.png" title="loogo" alt="logo" width="40" height="40"/>
-
         <div class="text-logo">
             <h4>برنامه روزانه من</h4>
         </div>
-
     </div>
-
         <div class="date">
             <h5>امروز <span>{{m().format('dddd jD jMMMM')}}</span></h5>
         </div>
@@ -24,7 +20,6 @@
         </div>
     </header>
     <div id="sidebar">
-
         <div class="menu">
             <ul>
             <li>برنامه های امروز</li>
@@ -34,11 +29,8 @@
             <li><form action="/logout" method="post"><button type="submit">خروج از حساب کاربری</button></form></li>
         </ul>
         </div>
-
         <div class="today-worklist">
-
             <div class="twl-block">
-
                 <div class="twlb-head">
                     <h4>لیست کار امروز</h4>
                 </div>
@@ -103,7 +95,7 @@ export default {
         },
         getTasks(){
             let that = this
-            axios.get('/gettasks/2021-02-13/2021-02-19').then(function(response){
+            axios.get('/gettasks/'+ moment().startOf('month').format('YYYY-MM-DD') +'/'+moment().format('YYYY-MM-DD')).then(function(response){
                if(response.status == 200 && response.statusText == 'OK'){
                    that.allTasks = response.data
                }

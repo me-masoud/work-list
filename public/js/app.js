@@ -1913,14 +1913,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1953,7 +1945,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getTasks: function getTasks() {
       var that = this;
-      axios.get('/gettasks/2021-02-13/2021-02-19').then(function (response) {
+      axios.get('/gettasks/' + moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().startOf('month').format('YYYY-MM-DD') + '/' + moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().format('YYYY-MM-DD')).then(function (response) {
         if (response.status == 200 && response.statusText == 'OK') {
           that.allTasks = response.data;
         }
