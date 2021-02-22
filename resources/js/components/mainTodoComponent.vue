@@ -37,11 +37,11 @@
                 <div class="twl-body">
                     <input type="text" v-on:keyup.enter="saveTask()" name="title" v-model="myTask.title" placeholder="تسک مورد نظر را وارد کنید">
                     <button @click="saveTask()" id="Button">ثبت</button>
-                    <ul style="display:inline-grid">
-                        <li v-for="task in tasks" :key="task.id">
-                            <input type="text" v-model="task.title" @blur="updateTask(task.title,task.description ,task.id)">
-                        </li>
-                    </ul>
+<!--                    <ul style="display:inline-grid">-->
+<!--                        <li v-for="task in tasks" :key="task.id">-->
+<!--                            <input type="text" v-model="task.title" @blur="updateTask(task.title,task.description ,task.id)">-->
+<!--                        </li>-->
+<!--                    </ul>-->
                 </div>
             </div>
         </div>
@@ -52,11 +52,18 @@
                 <div class="db-date-name"><h4>{{m(index , 'YYYY-MM-DD').format('jMMMM jDD - dddd')}}</h4></div>
             </div>
             <div class="db-body">
-                <ul>
+                <ul style="list-style: none">
                     <li v-for="item in task" :key="item.id">
-                        <span v-if="item.status == 'active'">فعال</span>
-                        <input v-if="edit" type="text" v-model="item.title" @blur="updateTask(item.title,item.description,item.id)">
-                        <span v-else @click="setEdit(1)">{{item.title}}-{{item.status}}</span>
+                        <span @click="deleteTask(item.id)" style="color: red">حذف</span>
+                        <span v-if="item.status == 'active'">
+                           <span class="ActiveDot" @click="updateTask(item.title, item.description , item.id , 'done')"></span>
+                        </span>
+                        <span v-else>
+                           <span class="DoneDot" @click="updateTask(item.title, item.descripiton , item.id , 'active')"></span>
+                        </span>
+                        <textarea  v-if="edit == item.id" type="text" v-model="item.title" @blur="updateTask(item.title,item.description,item.id , item.status)"></textarea>
+                        <span v-else @click="setEdit(item.id)">{{item.title}} </span>
+
                         </li>
                 </ul>
             </div>
@@ -85,6 +92,7 @@ export default {
             axios.post('/postmytask' , this.myTask).then(function(response){
                 that.myTask.title = null
                 that.getTodayTasks()
+                that.getTasks(moment().lang("en").startOf('month').format('YYYY-MM-DD') , moment().lang("en").format('YYYY-MM-DD'))
             })
         },
         getTodayTasks(){
@@ -93,34 +101,48 @@ export default {
                 that.tasks = response.data
             })
         },
-        getTasks(){
+        getTasks(start , end){
             let that = this
-            axios.get('/gettasks/'+ moment().startOf('month').format('YYYY-MM-DD') +'/'+moment().format('YYYY-MM-DD')).then(function(response){
+            axios.get('/gettasks/'+ start +'/'+end).then(function(response){
                if(response.status == 200 && response.statusText == 'OK'){
                    that.allTasks = response.data
                }
             })
         },
-        updateTask(title, description , id){
+        updateTask(title, description , id,status){
             let stagedTask = {
                 title : title,
                 descripiton:description,
                 id: id,
+                status:status,
             }
             let that = this
             axios.post('/updatetask' , stagedTask).then(function(response){
                 if(response.status == 200){
-                    that.setEdit(0)
+                    that.setEdit(null)
+                    that.getTasks(moment().lang("en").startOf('month').format('YYYY-MM-DD') , moment().lang("en").format('YYYY-MM-DD'))
                 }
             })
         },
-        setEdit(editable){
-            this.edit = editable
+        setEdit(id) {
+            this.edit = id
+        },
+        deleteTask(id){
+            let record = {
+                id : id,
+            }
+            let that = this
+            axios.post('/deletetask' , record).then(function (response) {
+                if(response.status == 200){
+                    that.setEdit(null)
+                    that.getTasks(moment().lang("en").startOf('month').format('YYYY-MM-DD') , moment().lang("en").format('YYYY-MM-DD'))
+                }
+            })
         }
     },
     created() {
         this.getTodayTasks()
-        this.getTasks()
+        this.getTasks(moment().startOf('month').format('YYYY-MM-DD') , moment().format('YYYY-MM-DD'))
     },
     mounted() {
         moment.updateLocale("fa", {
@@ -129,3 +151,19 @@ export default {
 
 }
 </script>
+<style scoped>
+    .DoneDot {
+        height: 25px;
+        width: 25px;
+        background-color: #68c943;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .ActiveDot {
+        height: 25px;
+        width: 25px;
+        background-color: #14eaca;
+        border-radius: 50%;
+        display: inline-block;
+    }
+</style>

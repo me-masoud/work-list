@@ -19,7 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/clear-cache', function() {
 
+    $configCache = Artisan::call('config:cache');
+    $clearCache = Artisan::call('cache:clear');
+    return 'cache cleared';
+});
 
 Auth::routes();
 
@@ -36,3 +41,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('gettodaytasks' ,[TodoController::class,'getTodayTasks'])->middleware('auth');
 Route::get('gettasks/{start}/{end}' ,[TodoController::class,'getTasks'])->middleware('auth');
 Route::post('updatetask', [TodoController::class , 'updateTask'])->middleware('auth');
+Route::post('deletetask', [TodoController::class , 'deleteTask'])->middleware('auth');

@@ -79,10 +79,18 @@ class TodoController extends Controller
 
         $update->title = $request->title;
         $update->description = $request->description;
+        $update->status = $request->status;
         $update->save();
 
         if($update){
             return 'updated';
         }
+    }
+
+    public function deletetask(Request $request)
+    {
+        $task = Todo::findOrFail($request->id);
+        $task->delete();
+        return 'deleted';
     }
 }
