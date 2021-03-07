@@ -10,7 +10,8 @@
 </head>
 <body>
     <div id="todo">
-    <router-view></router-view>
+    <router-view>
+    </router-view>
     </div>
 </body>
 </html>

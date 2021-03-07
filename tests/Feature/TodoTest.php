@@ -15,7 +15,7 @@ class TodoTest extends TestCase
      *
      * @return void
      */
-    public function test_check_todo_page_auth()
+    public function test_check_todo_page_authTest()
     {
     $todo = new ModelsTodo;
     $todo->title =  'kkk';
@@ -24,5 +24,11 @@ class TodoTest extends TestCase
     $todo->save();
     $todo = true;
     $this->assertCreated($todo);
+    }
+    public function testBasicTest()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
     }
 }

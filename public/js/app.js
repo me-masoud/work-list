@@ -1920,6 +1920,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1942,7 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/postmytask', this.myTask).then(function (response) {
         that.myTask.title = null;
         that.getTodayTasks();
-        that.getTasks(moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").startOf('month').format('YYYY-MM-DD'), moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").format('YYYY-MM-DD'));
+        that.getTasks(moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").startOf('jMonth').format('YYYY-MM-DD'), moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").format('YYYY-MM-DD'));
       });
     },
     getTodayTasks: function getTodayTasks() {
@@ -1970,7 +1975,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/updatetask', stagedTask).then(function (response) {
         if (response.status == 200) {
           that.setEdit(null);
-          that.getTasks(moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").startOf('month').format('YYYY-MM-DD'), moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").format('YYYY-MM-DD'));
+          that.getTasks(moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").startOf('jMonth').format('YYYY-MM-DD'), moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").format('YYYY-MM-DD'));
         }
       });
     },
@@ -1985,14 +1990,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/deletetask', record).then(function (response) {
         if (response.status == 200) {
           that.setEdit(null);
-          that.getTasks(moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").startOf('month').format('YYYY-MM-DD'), moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").format('YYYY-MM-DD'));
+          that.getTasks(moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").startOf('jMonth').format('YYYY-MM-DD'), moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().lang("en").format('YYYY-MM-DD'));
         }
       });
     }
   },
   created: function created() {
     this.getTodayTasks();
-    this.getTasks(moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().startOf('month').format('YYYY-MM-DD'), moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().format('YYYY-MM-DD'));
+    this.getTasks(moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().startOf('jMonth').format('YYYY-MM-DD'), moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default()().format('YYYY-MM-DD'));
   },
   mounted: function mounted() {
     moment_jalaali__WEBPACK_IMPORTED_MODULE_0___default().updateLocale("fa", {});
@@ -63131,7 +63136,7 @@ var staticRenderFns = [
         _c("li", [_vm._v("پروفایل من")]),
         _vm._v(" "),
         _c("li", [
-          _c("form", { attrs: { action: "/logout", method: "post" } }, [
+          _c("form", { attrs: { action: "/logout", method: "POST" } }, [
             _c("button", { attrs: { type: "submit" } }, [
               _vm._v("خروج از حساب کاربری")
             ])

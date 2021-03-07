@@ -18,6 +18,8 @@
                     <br>
                     <br>
                     <a href="/todo">ToDo</a>
+                    <br>
+                    <a href="/currency">Currency</a>
                 </div>
             </div>
         </div>

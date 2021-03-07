@@ -26,7 +26,12 @@
             <li>کلیه برنامه ها</li>
             <li>برنامه های ویژه</li>
             <li>پروفایل من</li>
-            <li><form action="/logout" method="post"><button type="submit">خروج از حساب کاربری</button></form></li>
+            <li>
+                <form action="/logout" method="POST">
+
+                    <button type="submit">خروج از حساب کاربری</button>
+                </form>
+            </li>
         </ul>
         </div>
         <div class="today-worklist">
@@ -92,7 +97,7 @@ export default {
             axios.post('/postmytask' , this.myTask).then(function(response){
                 that.myTask.title = null
                 that.getTodayTasks()
-                that.getTasks(moment().lang("en").startOf('month').format('YYYY-MM-DD') , moment().lang("en").format('YYYY-MM-DD'))
+                that.getTasks(moment().lang("en").startOf('jMonth').format('YYYY-MM-DD') , moment().lang("en").format('YYYY-MM-DD'))
             })
         },
         getTodayTasks(){
@@ -120,7 +125,7 @@ export default {
             axios.post('/updatetask' , stagedTask).then(function(response){
                 if(response.status == 200){
                     that.setEdit(null)
-                    that.getTasks(moment().lang("en").startOf('month').format('YYYY-MM-DD') , moment().lang("en").format('YYYY-MM-DD'))
+                    that.getTasks(moment().lang("en").startOf('jMonth').format('YYYY-MM-DD') , moment().lang("en").format('YYYY-MM-DD'))
                 }
             })
         },
@@ -135,14 +140,14 @@ export default {
             axios.post('/deletetask' , record).then(function (response) {
                 if(response.status == 200){
                     that.setEdit(null)
-                    that.getTasks(moment().lang("en").startOf('month').format('YYYY-MM-DD') , moment().lang("en").format('YYYY-MM-DD'))
+                    that.getTasks(moment().lang("en").startOf('jMonth').format('YYYY-MM-DD') , moment().lang("en").format('YYYY-MM-DD'))
                 }
             })
         }
     },
     created() {
         this.getTodayTasks()
-        this.getTasks(moment().startOf('month').format('YYYY-MM-DD') , moment().format('YYYY-MM-DD'))
+        this.getTasks(moment().startOf('jMonth').format('YYYY-MM-DD') , moment().format('YYYY-MM-DD'))
     },
     mounted() {
         moment.updateLocale("fa", {
